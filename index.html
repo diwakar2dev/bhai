@@ -6,9 +6,18 @@
   <title>AachmanPlayz - Official</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js">// SIMPLE VIDEO EMBED (no API needed)
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js">// CUSTOM INFO SECTION (replacing videos)
 document.getElementById('videos').innerHTML = `
-  <iframe width="100%" height="315" src="https://www.youtube.com/embed?listType=user_uploads&list=Aachmanplayz" allowfullscreen style="border-radius:15px"></iframe>
+  <div style="background:#111;padding:20px;border-radius:15px;box-shadow:0 0 20px cyan;text-align:left">
+    <p>Aachman, a consistent minecraft youtuber working consistently for his fans, uploading bangers on youtube. He is well known in his minecraft gaming skills and is respected in it too.</p>
+    <br>
+    <p>📅 Joined YouTube: 8 Jul 2025</p>
+    <p>🎂 Born: 21st September 2011</p>
+    <br>
+    <a href="https://www.instagram.com/aachmanplayz?igsh=MXJ1eW03NWg5eGNpaA%3D%3D" target="_blank">
+      <button class="btn">Instagram</button>
+    </a>
+  </div>
 `;
 
 </script>
@@ -115,7 +124,7 @@ async function getSubs(){
   try{
     let res = await fetch(`https://api.socialcounts.org/youtube-live-subscriber-count/${channelId}`);
     let data = await res.json();
-    document.getElementById('subs').innerText = data.est_sub + " Subscribers";
+    document.getElementById('subs').innerText = (data.est_sub || data.count || "0") + " Subscribers";
   }catch{
     document.getElementById('subs').innerText = "Unable to load subs";
   }
